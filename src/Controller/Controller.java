@@ -182,7 +182,7 @@ public class Controller {
 
             SvømmerInformationer svømmer = klub.getAlleMedlemerIKlubben().get(i);
 
-            if (svømmer.getNavn().equals("Morten")) {
+            if (svømmer.getNavn().equals(navnPåSvømmer)) {
 
                 return svømmer;
             }
