@@ -132,6 +132,7 @@ public class UserInterface {
 
 
     // Signe Spørgsmål her.
+    // Den tilføjer ikke et array af discpliner men i stedet kun den første discilpin man vælger ..
 
 
     public String[] valgteDiscipliner(SvømmerInformationer svømmerInformationer) {
