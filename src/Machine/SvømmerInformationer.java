@@ -91,8 +91,6 @@ public class SvømmerInformationer implements Serializable {
     }
 
     public void setDisciplin(String[] disciplin) {
-
-
         this.disciplin = disciplin;
     }
 

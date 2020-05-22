@@ -79,8 +79,7 @@ public class UserInterface {
 
             printTekst("Angiv hvilke discipliner der skal tilføjes til svømmeren: \n 1. Crawl \n 2. Brystsvømmming \n 3. Ryg Crawl \n 4. ButterFly");
 
-
-            String[] disciplin = valgteDiscipliner(nySvømmer);
+            String[] disciplin = valgteDiscipliner();
 
             nySvømmer.setDisciplin(disciplin);
 
@@ -135,13 +134,13 @@ public class UserInterface {
     // Den tilføjer ikke et array af discpliner men i stedet kun den første discilpin man vælger ..
 
 
-    public String[] valgteDiscipliner(SvømmerInformationer svømmerInformationer) {
+    public String[] valgteDiscipliner() {
 
 
         String[] chosenDisciplins = new String[4];
 
-
-        String in = userInput.next();
+        userInput.nextLine();
+        String in = userInput.nextLine();
 
         String[] inStrings = in.split(" ");
 
@@ -173,23 +172,6 @@ public class UserInterface {
 
         return chosenDisciplins;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     // Gode gamle sager
