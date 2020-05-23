@@ -39,9 +39,7 @@ public class Controller {
             int valgteTal1 = ui.fåBrugerValgSomInt();
 
 
-
             formandMenu(valgteTal1);
-
 
 
         } else if (valgteTal == 2) {
@@ -54,10 +52,6 @@ public class Controller {
 
 
             trænerMenu(valgteTal2);
-
-
-
-
 
 
         } else if (valgteTal == 3) {
@@ -96,7 +90,6 @@ public class Controller {
         for (int i = 0; i < klub.getAlleMedlemerIKlubben().size(); i++) {
 
 
-
             SvømmerInformationer svømmerInformationer = klub.getAlleMedlemerIKlubben().get(i);
             samledeBetalinger = samledeBetalinger + k.beregnKontigentBetalingForSvømmer(svømmerInformationer);
 
@@ -127,41 +120,46 @@ public class Controller {
 
     }
 
-               public void trænerMenu(int valgteTal) throws IOException, ClassNotFoundException {
+    public void trænerMenu(int valgteTal) throws IOException, ClassNotFoundException {
 
-                if (valgteTal == 1) {
-                    // Top 5
-                    ui.printTekst("Medlemmer i Klubben: " + "\n" + klub.getAlleMedlemerIKlubben());
-                    præsenterMenuForbrugeren();
-                } else if (valgteTal == 2) {
-                    præsenterMenuForbrugeren();
-                } else if (valgteTal == 3) {
-                    ui.printTekst("Medlemmer i Klubben: " + klub.getAlleMedlemerIKlubben());
+        if (valgteTal == 1) {
+            // Top 5
+            ui.printTekst("Medlemmer i Klubben: " + "\n" + klub.getAlleMedlemerIKlubben());
+            præsenterMenuForbrugeren();
+        } else if (valgteTal == 2) {
+            præsenterMenuForbrugeren();
+        } else if (valgteTal == 3) {
+            ui.printTekst("Medlemmer i Klubben: " + klub.getAlleMedlemerIKlubben());
 
-                  // Valgt svømmer.
+            // Valgt svømmer.
 
-                    ui.printTekst("Indtast navnet på Svømmeren der skal have et nyt træningsresultat: ");
-                    String søgtesvømmer = ui.fåBrugerValgSomStringt();
-                    ui.printTekst("Indtast først antal hele minutter");
+            ui.printTekst("Indtast navnet på Svømmeren der skal have et nyt træningsresultat: ");
+            String søgtesvømmer = ui.fåBrugerValgSomStringt();
 
-                    int valgteMinutter = ui.fåBrugerValgSomInt();
+            ui.printTekst("Indtast disciplin");
 
-                    ui.printTekst("Indtast antal sekunder");
+            String valgteDisciplin = ui.fåBrugerValgSomStringt();
 
-                    int valgteSekunder = ui.fåBrugerValgSomInt();
+            ui.printTekst("Indtast først antal hele minutter");
 
-                    ui.printTekst("Indtast antal millisekunder");
+            int valgteMinutter = ui.fåBrugerValgSomInt();
 
-                    int valgteMillisekunder = ui.fåBrugerValgSomInt();
+            ui.printTekst("Indtast antal sekunder");
 
-                    ui.printTekst("Vælg en dato for resultat. Dags dato er: " + LocalDate.now());
+            int valgteSekunder = ui.fåBrugerValgSomInt();
+
+            ui.printTekst("Indtast antal millisekunder");
+
+            int valgteMillisekunder = ui.fåBrugerValgSomInt();
+
+            ui.printTekst("Vælg en dato for resultat. Dags dato er: " + LocalDate.now());
 
 
-                    String valgteDato = ui.fåBrugerValgSomStringt();
+            String valgteDato = ui.fåBrugerValgSomStringt();
 
-                   træner.angivNytTræningsResultat(valgteMinutter, valgteSekunder,valgteMillisekunder, søgEfterSvømmer(søgtesvømmer) , valgteDato);
+            træner.angivNytTræningsResultat(valgteDisciplin, valgteMinutter, valgteSekunder, valgteMillisekunder, søgEfterSvømmer(søgtesvømmer), valgteDato);
 
-                   præsenterMenuForbrugeren();
+            præsenterMenuForbrugeren();
 
 
         }
@@ -187,15 +185,10 @@ public class Controller {
         }
 
 
-
     }
 
 
-
-
     public SvømmerInformationer søgEfterSvømmer(String navnPåSvømmer) {
-
-
 
 
         for (int i = 0; i < klub.getAlleMedlemerIKlubben().size(); i++) {
