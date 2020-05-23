@@ -4,13 +4,14 @@ import java.io.Serializable;
 import java.security.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 
 public class SvømmerInformationer implements Serializable {
 
     private String navn;
     private String adresse;
-    private LocalDate age;
+    private LocalDate age; // Dette er ikke alder, men fødselsdag.
     private boolean aktivitetsform;
     private String medlemskab;
     private String[] disciplin;
@@ -128,13 +129,15 @@ public class SvømmerInformationer implements Serializable {
         this.kontigentBetaling = kontigentBetaling;
     }
 
+
+
     @Override
     public String toString() {
         return "\n" + "Fulde navn: " +
                  navn + " " + " Adresse: " +
                  adresse + " Fødselsdag: " + age + " \n " + " Aktivitetsform: " +
                  aktivitetsform + " Medlemdskab:  "
-                + medlemskab + " Valgte discipliner: " + Arrays.toString(disciplin) + " Bedste registrede tid: " + time + "Dato for registrering: " + datoForNytResultat + "\n";
+                + medlemskab + " Valgte discipliner: " + Arrays.toString(disciplin) + " Bedste registrede tid: " + time + " Dato for registrering: " + datoForNytResultat + "\n";
     }
 
 

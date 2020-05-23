@@ -1,6 +1,7 @@
 package Controller;
 
 import Machine.*;
+import Storage.FilHåndtering;
 import UI.UserInterface;
 import Økonomi.Kontigentberegner;
 
@@ -45,9 +46,9 @@ public class Controller {
 
         } else if (valgteTal == 2) {
 
-            ui.printTekst("Tryk 1 for at se alle medlemmer i klubben: ");
-            ui.printTekst("Tryk 2 for vende tilbage til hovedmenu: ");
-            ui.printTekst("Tryk 3 for at registrere nyt resultat for svømmer: ");
+            ui.printTekst("Tryk 1 for at se alle medlemmer i klubben");
+            ui.printTekst("Tryk 2 for vende tilbage til hovedmenu");
+            ui.printTekst("Tryk 3 for at registrere nyt resultat for svømmer");
 
             int valgteTal2 = ui.fåBrugerValgSomInt();
 
@@ -62,8 +63,8 @@ public class Controller {
         } else if (valgteTal == 3) {
 
 
-            ui.printTekst("tryk 1 for at se samlede indbetalinger: ");
-            ui.printTekst("Tryk 2 for at sætte medlemmer i restance: ");
+            ui.printTekst("tryk 1 for at se samlede indbetalinger");
+            ui.printTekst("Tryk 2 for at sætte medlemmer i restance");
             ui.printTekst("Tryk 3 for at vende tilbage til hovedmenuen");
 
             int valgtetal3 = ui.fåBrugerValgSomInt();
@@ -141,17 +142,24 @@ public class Controller {
 
                     ui.printTekst("Indtast navnet på Svømmeren der skal have et nyt træningsresultat: ");
                     String søgtesvømmer = ui.fåBrugerValgSomStringt();
-                    ui.printTekst("Indtast tid i minutter  ");
-
+                    ui.printTekst("Indtast først antal hele minutter");
 
                     int valgteMinutter = ui.fåBrugerValgSomInt();
 
-                    ui.printTekst(" Vælg en dato for resultat. dags dato er = " + LocalDate.now());
+                    ui.printTekst("Indtast antal sekunder");
+
+                    int valgteSekunder = ui.fåBrugerValgSomInt();
+
+                    ui.printTekst("Indtast antal millisekunder");
+
+                    int valgteMillisekunder = ui.fåBrugerValgSomInt();
+
+                    ui.printTekst("Vælg en dato for resultat. Dags dato er: " + LocalDate.now());
 
 
                     String valgteDato = ui.fåBrugerValgSomStringt();
 
-                   træner.angivNytTræningsResultat(valgteMinutter , søgEfterSvømmer(søgtesvømmer) , valgteDato);
+                   træner.angivNytTræningsResultat(valgteMinutter, valgteSekunder,valgteMillisekunder, søgEfterSvømmer(søgtesvømmer) , valgteDato);
 
                    præsenterMenuForbrugeren();
 

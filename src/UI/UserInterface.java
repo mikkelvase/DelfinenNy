@@ -61,7 +61,7 @@ public class UserInterface {
         }
 
 
-        printTekst("Angiv type af aktivitet. tryk 1 for: KonkurrenceSvømmer , Tryk 2 for: Motionist");
+        printTekst("Angiv type af aktivitet. tryk 1 for KonkurrenceSvømmer, Tryk 2 for Motionist");
 
         int userChoice2 = userInput.nextInt();
         if (userChoice2 == 1) {
