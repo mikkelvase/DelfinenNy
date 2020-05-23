@@ -1,12 +1,16 @@
 package Økonomi;
 
 import Machine.SvømmerInformationer;
+import UI.UserInterface;
 
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.ArrayList;
 
 public class Kontigentberegner {
 
+    ArrayList<SvømmerInformationer> personerIRestance = new ArrayList<>();
+    UserInterface ui = new UserInterface();
 
 
 
@@ -63,5 +67,56 @@ public double beregnKontigentBetalingForSvømmer(SvømmerInformationer svømmerI
         return passivTakst;
     }
 
+
 }
+
+    public ArrayList<SvømmerInformationer> printMedlemmerIRestance(ArrayList<SvømmerInformationer> svømmerInformationers) {
+
+
+        for (int i = 0; i < svømmerInformationers.size(); i++) {
+
+            boolean eriRestance = svømmerInformationers.get(i).isiRestance();
+
+            if (eriRestance == true ) {
+
+                personerIRestance.add(svømmerInformationers.get(i));
+
+            }
+
+
+
+        }
+
+    return personerIRestance;
+    }
+
+    public void sætSvømmerIRestance(SvømmerInformationer svømmerInformationer){
+
+
+
+
+        ui.printTekst("Tryk 1 for at sætte svømmeren i restance." +
+                "Tryk 2 for at fjerne svømmeren fra listen. ");
+        int revisorvalg = ui.fåBrugerValgSomInt();
+
+        if(revisorvalg == 1) {
+
+            svømmerInformationer.setiRestance(true);
+            ui.printTekst(svømmerInformationer.getNavn() + "Er tilføjet til /i Restance Listen/");
+
+        } else if (revisorvalg == 2) {
+
+            svømmerInformationer.setiRestance(false);
+            ui.printTekst(svømmerInformationer.getNavn() + "Er fjernet fra  /i Restance Listen/");
+        }
+
+
+
+    }
+
+    @Override
+    public String toString() {
+        return
+                "personerIRestance = " + personerIRestance;
+    }
 }

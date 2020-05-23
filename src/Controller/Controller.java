@@ -1,9 +1,6 @@
 package Controller;
 
-import Machine.FilHåndtering;
-import Machine.Klubben;
-import Machine.SvømmerInformationer;
-import Machine.Træner;
+import Machine.*;
 import UI.UserInterface;
 import Økonomi.Kontigentberegner;
 
@@ -19,6 +16,7 @@ public class Controller {
     Klubben klub = new Klubben();
     Kontigentberegner k = new Kontigentberegner();
     Træner træner = new Træner();
+    Revisor revisor = new Revisor();
 
 
     public void præsenterMenuForbrugeren() throws IOException, ClassNotFoundException {
@@ -80,6 +78,7 @@ public class Controller {
         }
     }
 
+// Kan flyttes til Run funktion med getklub fra controller.
 
     public void indlæsAlleSvømmereNårProgrammetStarter() {
 
@@ -89,7 +88,7 @@ public class Controller {
 
     }
 
-    // Fejl ligger
+    // Kan med fordel  flyttes til revisor // Økonomiklassen
     public double udregnKontigentBetalingerForHeleKlubben() {
 
         double samledeBetalinger = 0.0;
@@ -131,7 +130,7 @@ public class Controller {
 
                 if (valgteTal == 1) {
                     // Top 5
-                    ui.printTekst("Medlemmer i Klubben: " + klub.getAlleMedlemerIKlubben());
+                    ui.printTekst("Medlemmer i Klubben: " + "\n" + klub.getAlleMedlemerIKlubben());
                     præsenterMenuForbrugeren();
                 } else if (valgteTal == 2) {
                     præsenterMenuForbrugeren();
@@ -140,14 +139,20 @@ public class Controller {
 
                   // Valgt svømmer.
 
-                    ui.printTekst("Indtast navnet på den der skal have et nyt resultat: ");
+                    ui.printTekst("Indtast navnet på Svømmeren der skal have et nyt træningsresultat: ");
                     String søgtesvømmer = ui.fåBrugerValgSomStringt();
                     ui.printTekst("Indtast tid i minutter  ");
 
 
                     int valgteMinutter = ui.fåBrugerValgSomInt();
 
-                   træner.setTime(valgteMinutter , søgEfterSvømmer(søgtesvømmer));
+                    ui.printTekst(" Vælg en dato for resultat. dags dato er = " + LocalDate.now());
+
+
+                    String valgteDato = ui.fåBrugerValgSomStringt();
+
+                   træner.angivNytTræningsResultat(valgteMinutter , søgEfterSvømmer(søgtesvømmer) , valgteDato);
+
                    præsenterMenuForbrugeren();
 
 
@@ -161,7 +166,12 @@ public class Controller {
             ui.printTekst("Forventede indbetalinger for Klubben " + udregnKontigentBetalingerForHeleKlubben());
             præsenterMenuForbrugeren();
         } else if (valgteTal == 2) {
-            ui.printTekst("Der er ingen i restance");
+            ui.printTekst("Medlemmer i Restance: " + k.printMedlemmerIRestance(klub.getAlleMedlemerIKlubben()));
+
+            ui.printTekst("Indtast navnet på den svømmer du vil tilføje eller fjerne fra listen.");
+            String navn = ui.fåBrugerValgSomStringt();
+
+            revisor.sætSvømmerIRestance(søgEfterSvømmer(navn));
             præsenterMenuForbrugeren();
         } else if (valgteTal == 3) {
             præsenterMenuForbrugeren();
@@ -171,6 +181,8 @@ public class Controller {
 
 
     }
+
+
 
 
     public SvømmerInformationer søgEfterSvømmer(String navnPåSvømmer) {
@@ -192,6 +204,10 @@ public class Controller {
 
         return null;
 
+    }
+
+    public Klubben getKlub() {
+        return klub;
     }
 }
 

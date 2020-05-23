@@ -16,7 +16,8 @@ public class SvømmerInformationer implements Serializable {
     private String[] disciplin;
     private double kontigentBetaling;
     private LocalTime time;
-    private boolean iRestance; // ? ..
+    private LocalDate datoForNytResultat;
+    private boolean iRestance;
 
 
 
@@ -57,6 +58,18 @@ public class SvømmerInformationer implements Serializable {
 
         this.age = age;
         return age;
+    }
+
+    public boolean isiRestance() {
+        return iRestance;
+    }
+
+    public boolean isAktivitetsform() {
+        return aktivitetsform;
+    }
+
+    public LocalDate getDatoForNytResultat() {
+        return datoForNytResultat;
     }
 
     public double getKontigentBetaling() {
@@ -102,17 +115,26 @@ public class SvømmerInformationer implements Serializable {
 
     }
 
+    public void setiRestance(boolean iRestance) {
+        this.iRestance = iRestance;
+    }
+
+    public LocalDate setdatoForNytResultat(String resultatTid) {
+        this.datoForNytResultat = LocalDate.parse(resultatTid);
+        return datoForNytResultat;
+    }
+
     public void setKontigentBetaling(double kontigentBetaling) {
         this.kontigentBetaling = kontigentBetaling;
     }
 
     @Override
     public String toString() {
-        return "Fulde navn: " +
+        return "\n" + "Fulde navn: " +
                  navn + " " + " Adresse: " +
                  adresse + " Fødselsdag: " + age + " \n " + " Aktivitetsform: " +
                  aktivitetsform + " Medlemdskab:  "
-                + medlemskab + " Valgte discipliner: " + Arrays.toString(disciplin) + " Bedste registrede tid: " + time + "\n";
+                + medlemskab + " Valgte discipliner: " + Arrays.toString(disciplin) + " Bedste registrede tid: " + time + "Dato for registrering: " + datoForNytResultat + "\n";
     }
 
 
