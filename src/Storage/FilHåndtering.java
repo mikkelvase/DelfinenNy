@@ -1,5 +1,6 @@
-package Machine;
+package Storage;
 
+import Machine.SvømmerInformationer;
 import org.w3c.dom.ls.LSOutput;
 
 import javax.imageio.metadata.IIOMetadataFormatImpl;

@@ -1,6 +1,7 @@
 package Controller;
 
 import Machine.*;
+import Storage.FilHåndtering;
 import UI.UserInterface;
 import Økonomi.Kontigentberegner;
 
@@ -38,16 +39,14 @@ public class Controller {
             int valgteTal1 = ui.fåBrugerValgSomInt();
 
 
-
             formandMenu(valgteTal1);
-
 
 
         } else if (valgteTal == 2) {
 
-            ui.printTekst("Tryk 1 for at se alle medlemmer i klubben: ");
-            ui.printTekst("Tryk 2 for vende tilbage til hovedmenu: ");
-            ui.printTekst("Tryk 3 for at registrere nyt resultat for svømmer: ");
+            ui.printTekst("Tryk 1 for at se alle medlemmer i klubben");
+            ui.printTekst("Tryk 2 for vende tilbage til hovedmenu");
+            ui.printTekst("Tryk 3 for at registrere nyt resultat for svømmer");
 
             int valgteTal2 = ui.fåBrugerValgSomInt();
 
@@ -55,15 +54,11 @@ public class Controller {
             trænerMenu(valgteTal2);
 
 
-
-
-
-
         } else if (valgteTal == 3) {
 
 
-            ui.printTekst("tryk 1 for at se samlede indbetalinger: ");
-            ui.printTekst("Tryk 2 for at sætte medlemmer i restance: ");
+            ui.printTekst("tryk 1 for at se samlede indbetalinger");
+            ui.printTekst("Tryk 2 for at sætte medlemmer i restance");
             ui.printTekst("Tryk 3 for at vende tilbage til hovedmenuen");
 
             int valgtetal3 = ui.fåBrugerValgSomInt();
@@ -93,7 +88,6 @@ public class Controller {
 
         double samledeBetalinger = 0.0;
         for (int i = 0; i < klub.getAlleMedlemerIKlubben().size(); i++) {
-
 
 
             SvømmerInformationer svømmerInformationer = klub.getAlleMedlemerIKlubben().get(i);
@@ -126,34 +120,46 @@ public class Controller {
 
     }
 
-               public void trænerMenu(int valgteTal) throws IOException, ClassNotFoundException {
+    public void trænerMenu(int valgteTal) throws IOException, ClassNotFoundException {
 
-                if (valgteTal == 1) {
-                    // Top 5
-                    ui.printTekst("Medlemmer i Klubben: " + "\n" + klub.getAlleMedlemerIKlubben());
-                    præsenterMenuForbrugeren();
-                } else if (valgteTal == 2) {
-                    præsenterMenuForbrugeren();
-                } else if (valgteTal == 3) {
-                    ui.printTekst("Medlemmer i Klubben: " + klub.getAlleMedlemerIKlubben());
+        if (valgteTal == 1) {
+            // Top 5
+            ui.printTekst("Medlemmer i Klubben: " + "\n" + klub.getAlleMedlemerIKlubben());
+            præsenterMenuForbrugeren();
+        } else if (valgteTal == 2) {
+            præsenterMenuForbrugeren();
+        } else if (valgteTal == 3) {
+            ui.printTekst("Medlemmer i Klubben: " + klub.getAlleMedlemerIKlubben());
 
-                  // Valgt svømmer.
+            // Valgt svømmer.
 
-                    ui.printTekst("Indtast navnet på Svømmeren der skal have et nyt træningsresultat: ");
-                    String søgtesvømmer = ui.fåBrugerValgSomStringt();
-                    ui.printTekst("Indtast tid i minutter  ");
+            ui.printTekst("Indtast navnet på Svømmeren der skal have et nyt træningsresultat: ");
+            String søgtesvømmer = ui.fåBrugerValgSomStringt();
+
+            ui.printTekst("Indtast disciplin");
+
+            String valgteDisciplin = ui.fåBrugerValgSomStringt();
+
+            ui.printTekst("Indtast først antal hele minutter");
+
+            int valgteMinutter = ui.fåBrugerValgSomInt();
+
+            ui.printTekst("Indtast antal sekunder");
+
+            int valgteSekunder = ui.fåBrugerValgSomInt();
+
+            ui.printTekst("Indtast antal millisekunder");
+
+            int valgteMillisekunder = ui.fåBrugerValgSomInt();
+
+            ui.printTekst("Vælg en dato for resultat. Dags dato er: " + LocalDate.now());
 
 
-                    int valgteMinutter = ui.fåBrugerValgSomInt();
+            String valgteDato = ui.fåBrugerValgSomStringt();
 
-                    ui.printTekst(" Vælg en dato for resultat. dags dato er = " + LocalDate.now());
+            træner.angivNytTræningsResultat(valgteDisciplin, valgteMinutter, valgteSekunder, valgteMillisekunder, søgEfterSvømmer(søgtesvømmer), valgteDato);
 
-
-                    String valgteDato = ui.fåBrugerValgSomStringt();
-
-                   træner.angivNytTræningsResultat(valgteMinutter , søgEfterSvømmer(søgtesvømmer) , valgteDato);
-
-                   præsenterMenuForbrugeren();
+            præsenterMenuForbrugeren();
 
 
         }
@@ -179,15 +185,10 @@ public class Controller {
         }
 
 
-
     }
 
 
-
-
     public SvømmerInformationer søgEfterSvømmer(String navnPåSvømmer) {
-
-
 
 
         for (int i = 0; i < klub.getAlleMedlemerIKlubben().size(); i++) {

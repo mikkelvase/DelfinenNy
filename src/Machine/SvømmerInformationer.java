@@ -4,19 +4,21 @@ import java.io.Serializable;
 import java.security.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 
 public class SvømmerInformationer implements Serializable {
 
     private String navn;
     private String adresse;
-    private LocalDate age;
+    private LocalDate age; // Dette er ikke alder, men fødselsdag.
     private boolean aktivitetsform;
     private String medlemskab;
     private String[] disciplin;
     private double kontigentBetaling;
-    private LocalTime time;
-    private LocalDate datoForNytResultat;
+    //private LocalTime time;
+    private Resultat resultat;
+    //private LocalDate datoForNytResultat;
     private boolean iRestance;
 
 
@@ -68,16 +70,24 @@ public class SvømmerInformationer implements Serializable {
         return aktivitetsform;
     }
 
+    /*
     public LocalDate getDatoForNytResultat() {
         return datoForNytResultat;
     }
+     */
 
     public double getKontigentBetaling() {
         return kontigentBetaling;
     }
 
+    /*
     public LocalTime getTime() {
         return time;
+    }
+     */
+
+    public Resultat getResultat() {
+        return resultat;
     }
 
     // Settere
@@ -87,8 +97,14 @@ public class SvømmerInformationer implements Serializable {
         this.navn = navn;
     }
 
+    /*
     public void setTime(LocalTime time) {
         this.time = time;
+    }
+     */
+
+    public void setResultat(Resultat resultat) {
+        this.resultat = resultat;
     }
 
     public void setAdresse(String adresse) {
@@ -119,14 +135,19 @@ public class SvømmerInformationer implements Serializable {
         this.iRestance = iRestance;
     }
 
+    /*
     public LocalDate setdatoForNytResultat(String resultatTid) {
         this.datoForNytResultat = LocalDate.parse(resultatTid);
         return datoForNytResultat;
     }
 
+     */
+
     public void setKontigentBetaling(double kontigentBetaling) {
         this.kontigentBetaling = kontigentBetaling;
     }
+
+
 
     @Override
     public String toString() {
@@ -134,7 +155,7 @@ public class SvømmerInformationer implements Serializable {
                  navn + " " + " Adresse: " +
                  adresse + " Fødselsdag: " + age + " \n " + " Aktivitetsform: " +
                  aktivitetsform + " Medlemdskab:  "
-                + medlemskab + " Valgte discipliner: " + Arrays.toString(disciplin) + " Bedste registrede tid: " + time + "Dato for registrering: " + datoForNytResultat + "\n";
+                + medlemskab + " Valgte discipliner: " + Arrays.toString(disciplin) + "\nBedste reultat: " + resultat +  "\n";
     }
 
 
