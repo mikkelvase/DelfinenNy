@@ -85,11 +85,12 @@ public double beregnKontigentBetalingForSvømmer(SvømmerInformationer svømmerI
 
 
 
+
         }
 
     return personerIRestance;
     }
-
+/*
     public void sætSvømmerIRestance(SvømmerInformationer svømmerInformationer){
 
 
@@ -113,6 +114,8 @@ public double beregnKontigentBetalingForSvømmer(SvømmerInformationer svømmerI
 
 
     }
+
+ */
 
     @Override
     public String toString() {
