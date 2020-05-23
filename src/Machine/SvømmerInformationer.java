@@ -7,6 +7,8 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 
+
+//  the process of translating data structures or object state into a format that can be stored.
 public class SvømmerInformationer implements Serializable {
 
     private String navn;

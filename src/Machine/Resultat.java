@@ -1,8 +1,10 @@
 package Machine;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Resultat{
+//  the process of translating data structures or object state into a format that can be stored is called Serializable. Dette skal implementeres før vi kan gemme til fil.
+public class Resultat implements Serializable {
 
     String disciplin;
     int minutter;

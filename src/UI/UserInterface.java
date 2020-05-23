@@ -20,14 +20,14 @@ public class UserInterface {
 
 
 
-    // Bug 2 gang man opretter svømmer springer den setnavn metoden over...
-
     public SvømmerInformationer opretEnNySvømmer() {
 
-        // Vi opretter en top Svømmer uden nogen constructor.
+        // Vi opretter en tom Svømmer uden nogen constructor. Så vi kan sætte via get og settere i Svømmerinformationer.
 
         SvømmerInformationer nySvømmer = new SvømmerInformationer();
 
+
+        // Prompts og input fra brugeren anvendes til at "bygge" en svømmer.
 
         printTekst("Indtast venligst navn på medlemmet: ");
 
@@ -105,7 +105,7 @@ public class UserInterface {
 
 
 
-
+// Retunerer en int værdi som brugeren vælger via Scanenr input
     public int fåBrugerValgSomInt() {
 
         Scanner s = new Scanner(System.in);
@@ -115,6 +115,7 @@ public class UserInterface {
         return brugervalg;
     }
 
+    // Retunerer en String værdi som brugeren vælger via Scanenr input
     public String fåBrugerValgSomStringt() {
 
         Scanner s = new Scanner(System.in);
@@ -130,18 +131,18 @@ public class UserInterface {
 
 
 
-    // Signe Spørgsmål her.
-    // Den tilføjer ikke et array af discpliner men i stedet kun den første discilpin man vælger ..
-
+// Bygger en array af valgte discipliner ud fra brugerens indtastninger.
 
     public String[] valgteDiscipliner() {
 
-
+        // Brugervalg gemmes i Array
         String[] chosenDisciplins = new String[4];
 
         userInput.nextLine();
+
         String in = userInput.nextLine();
 
+        // The method split() splits a String into multiple Strings given the delimiter that separates them
         String[] inStrings = in.split(" ");
 
         int[] integers = new int[inStrings.length];
