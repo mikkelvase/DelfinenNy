@@ -17,23 +17,18 @@ public class SvømmerInformationer implements Serializable {
     private String[] disciplin;
     private double kontigentBetaling;
     //private LocalTime time;
-    private Resultat resultat;
-    private StævneResultat stævneResultat;
+    private Resultat resultatCrawl;
+    private Resultat resultatBryst;
+    private Resultat resultatRygcrawl;
+    private Resultat resultatButterfly;
+    private StævneResultat stævneResultatCrawl;
+    private StævneResultat stævneResultatBryst;
+    private StævneResultat stævneResultatRygcrawl;
+    private StævneResultat stævneResultatButterfly;
+
     //private LocalDate datoForNytResultat;
     private boolean iRestance;
 
-
-
-/*
-    public SvømmerInformationer(String navn, String fødselsdato, String adresse, String aktivitetsform, String medlemskab) {
-        this.navn = navn;
-        this.fødselsdato = fødselsdato;
-        this.adresse = adresse;
-        this.aktivitetsform = aktivitetsform;
-        this.medlemskab = medlemskab;
-    }
-
- */
 
     // Gettere
 
@@ -57,6 +52,22 @@ public class SvømmerInformationer implements Serializable {
         return disciplin;
     }
 
+    public Resultat getResultatCrawl() {
+        return resultatCrawl;
+    }
+
+    public Resultat getResultatBryst() {
+        return resultatBryst;
+    }
+
+    public Resultat getResultatRygcrawl() {
+        return resultatRygcrawl;
+    }
+
+    public Resultat getResultatButterfly() {
+        return resultatButterfly;
+    }
+
     public LocalDate getFødselsdato() {
 
         this.fødselsdato = fødselsdato;
@@ -75,9 +86,7 @@ public class SvømmerInformationer implements Serializable {
         return kontigentBetaling;
     }
 
-    public Resultat getResultat() {
-        return resultat;
-    }
+
 
 
     // Settere
@@ -87,13 +96,38 @@ public class SvømmerInformationer implements Serializable {
     }
 
 
-    public void setResultat(Resultat resultat) {
-        this.resultat = resultat;
+    public void setStævneResultatCrawl(StævneResultat stævneResultatCrawl) {
+        this.stævneResultatCrawl = stævneResultatCrawl;
     }
 
-    public void setStævneResultat(StævneResultat stævneResultat) {
-        this.stævneResultat = stævneResultat;
+    public void setStævneResultatBryst(StævneResultat stævneResultatBryst) {
+        this.stævneResultatBryst = stævneResultatBryst;
     }
+
+    public void setStævneResultatRygcrawl(StævneResultat stævneResultatRygcrawl) {
+        this.stævneResultatRygcrawl = stævneResultatRygcrawl;
+    }
+
+    public void setStævneResultatButterfly(StævneResultat stævneResultatButterfly) {
+        this.stævneResultatButterfly = stævneResultatButterfly;
+    }
+
+    public void setResultatCrawl(Resultat resultatCrawl) {
+        this.resultatCrawl = resultatCrawl;
+    }
+
+    public void setResultatBryst(Resultat resultatBryst) {
+        this.resultatBryst = resultatBryst;
+    }
+
+    public void setResultatRygcrawl(Resultat resultatRygcrawl) {
+        this.resultatRygcrawl = resultatRygcrawl;
+    }
+
+    public void setResultatButterfly(Resultat resultatButterfly) {
+        this.resultatButterfly = resultatButterfly;
+    }
+
 
     public void setAdresse(String adresse) {
         this.adresse = adresse;
@@ -145,12 +179,17 @@ public class SvømmerInformationer implements Serializable {
     @Override
     public String toString() {
         return "\n" + "Fulde navn: " +
-                 navn + " " + " Adresse: " +
-                 adresse + " Fødselsdag: " + fødselsdato + " \n " + " Aktivitetsform: " +
-                 aktivitetsform + " Medlemdskab:  "
-                + medlemskab + " Valgte discipliner: " + Arrays.toString(disciplin) + "\nBedste træningsreultat: " + resultat +  "\n"
-                + "\nBedste stævnesreultat: " + stævneResultat +  "\n";
+                 navn  + " Adresse: " +
+                 adresse + " Fødselsdag: " + fødselsdato + "\n" + "Aktivitetsform: " +
+                 aktivitetsform + " Medlemdskab: "
+                + medlemskab + " Valgte discipliner: " + Arrays.toString(disciplin)
+                + "\nBedste træningsreultat: " + resultatCrawl
+                + "\nBedste træningsreultat: " + resultatRygcrawl
+                + "\nBedste træningsreultat: " + resultatBryst
+                + "\nBedste træningsreultat: " + resultatButterfly
+                + "\nBedste stævnesreultat: "  + stævneResultatCrawl
+                + "\nBedste stævnesreultat: "  + stævneResultatRygcrawl
+                + "\nBedste stævnesreultat: "  + stævneResultatBryst
+                + "\nBedste stævnesreultat: "  + stævneResultatButterfly + "\n";
     }
-
-
 }

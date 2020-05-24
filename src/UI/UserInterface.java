@@ -89,10 +89,6 @@ public class UserInterface {
 
 
 
-
-
-
-
 // Retunerer en int værdi som brugeren vælger via Scanenr input
     public int fåBrugerValgSomInt() {
 
@@ -162,52 +158,4 @@ public class UserInterface {
         return chosenDisciplins;
     }
 
-
-
-
-
-
-    // Gode gamle sager
-
-
-    /*
-    public String[] valgteDiscipliner(SvømmerInformationer svømmer) {
-
-
-        String[] valgte =  svømmer.getDisciplin();
-
-        int arrayValg = userInput.nextInt();
-
-        while (userInput.hasNextInt()) {
-
-
-        }
-
-    }
-
-
-     int valgteSvømmeDiscipliner = userInput.nextInt();
-
-
-            // Opgave der skal løses her: Mulighed for at tilføje flere en end disciplin af gangen.
-
-            if (valgteSvømmeDiscipliner == 1) {
-                nySvømmer.setDisciplin("Crawl");
-                printTekst("Tilføjede Crawl til svømmeren: " + nySvømmer.getNavn());
-            } else if (valgteSvømmeDiscipliner == 2) {
-                nySvømmer.setDisciplin("Bryst");
-                printTekst("Tilføjede Bryst til svømmeren: " + nySvømmer.getNavn());
-            } else if (valgteSvømmeDiscipliner == 3){
-                nySvømmer.setDisciplin("Ryg Crawl");
-                printTekst("Tilføjede Ryg Crawl til svømmeren: " + nySvømmer.getNavn());
-
-                // printTekst("Noget gik galt...");
-            } else if (valgteSvømmeDiscipliner == 4) {
-
-                nySvømmer.setDisciplin("Butterfly");
-                printTekst("Tilføjede Butterfly til svømmeren: " + nySvømmer.getNavn());
-
-            }
-
-     */
 }

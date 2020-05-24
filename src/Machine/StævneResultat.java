@@ -22,8 +22,7 @@ public class StævneResultat extends Resultat {
     @Override
     public String toString() {
         return
-                "Dato: " + dato +
-                "\nStævne: "  + stævneNavn + " Disciplin: " + disciplin + " Placering: nr. " + placering + "\n" +
-                        "Tid: " + minutter + ":" + sekunder + ":" + millisekunder;
+                "Disciplin: " + disciplin + " Stævne: "  + stævneNavn + " Placering: nr. " + placering +
+                        " Tid: " + minutter + ":" + sekunder + ":" + millisekunder + " Dato: " + dato;
     }
 }

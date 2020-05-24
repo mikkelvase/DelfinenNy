@@ -231,9 +231,6 @@ public class Controller {
 
     }
 
-    public Klubben getKlub() {
-        return klub;
-    }
 }
 
 

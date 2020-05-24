@@ -25,8 +25,8 @@ public class Resultat implements Serializable {
     @Override
     public String toString() {
         return
-                "Disciplin: " + disciplin + "\n" +
-                "Tid: " + minutter + ":" + sekunder + ":" + millisekunder +
-                "\nDato: " + dato;
+                "" + disciplin +
+                " Tid: " + minutter + ":" + sekunder + ":" + millisekunder +
+                " Dato: " + dato;
     }
 }
