@@ -13,39 +13,50 @@ public class Træner {
     // Registrer tid og date for svømmer
 
     // Fejl sender ikke svømmer med.
-    public void angivNytTræningsResultat(String disciplin, int minutes, int seconds, int milliseconds, SvømmerInformationer svømmer, String dato) {
-        Resultat resultat = new Resultat(disciplin, minutes, seconds, milliseconds, LocalDate.parse(dato));
+    public void angivNytTræningsResultat(int disciplin, int minutes, int seconds, int milliseconds, SvømmerInformationer svømmer, String dato) {
 
-        if(disciplin.toLowerCase().equals("bryst")) {
-            svømmer.setResultatBryst(resultat);
-        } else if (disciplin.toLowerCase().equals("butterfly")) {
-            svømmer.setResultatButterfly(resultat);
-        } else if (disciplin.toLowerCase().equals("crawl")) {
+        if(disciplin == 1) {
+            Resultat resultat = new Resultat("Crawl", minutes, seconds, milliseconds, LocalDate.parse(dato));
             svømmer.setResultatCrawl(resultat);
-        } else if (disciplin.toLowerCase().equals("rygcrawl")) {
+            ui.printTekst("Vi har tilføjet følgende resultat:\n" + resultat + "\nTil svømmeren: " + svømmer.getNavn());
+        } else if (disciplin == 2) {
+            Resultat resultat = new Resultat("Rygcrawl", minutes, seconds, milliseconds, LocalDate.parse(dato));
             svømmer.setResultatRygcrawl(resultat);
+            ui.printTekst("Vi har tilføjet følgende resultat:\n" + resultat + "\nTil svømmeren: " + svømmer.getNavn());
+        } else if (disciplin == 3) {
+            Resultat resultat = new Resultat("Bryst", minutes, seconds, milliseconds, LocalDate.parse(dato));
+            svømmer.setResultatBryst(resultat);
+            ui.printTekst("Vi har tilføjet følgende resultat:\n" + resultat + "\nTil svømmeren: " + svømmer.getNavn());
+        } else if (disciplin == 4) {
+            Resultat resultat = new Resultat("Butterfly", minutes, seconds, milliseconds, LocalDate.parse(dato));
+            svømmer.setResultatButterfly(resultat);
+            ui.printTekst("Vi har tilføjet følgende resultat:\n" + resultat + "\nTil svømmeren: " + svømmer.getNavn());
         }
 
 
-        ui.printTekst("Vi har tilføjet følgende resultat:\n" + resultat + "\nTil svømmeren: " + svømmer.getNavn());
+
     }
 
-    public void angivNytStævneResultat(String stævneNavn, int placering, String disciplin, int minutes, int seconds, int milliseconds, SvømmerInformationer svømmer, String dato) {
-        StævneResultat stævneResultat = new StævneResultat(disciplin, minutes, seconds, milliseconds, LocalDate.parse(dato), stævneNavn, placering);
+    public void angivNytStævneResultat(String stævneNavn, int placering, int disciplin, int minutes, int seconds, int milliseconds, SvømmerInformationer svømmer, String dato) {
 
-        if(disciplin.toLowerCase().equals("bryst")) {
-            svømmer.setStævneResultatBryst(stævneResultat);
-        } else if (disciplin.toLowerCase().equals("butterfly")) {
-            svømmer.setStævneResultatButterfly(stævneResultat);
-        } else if (disciplin.toLowerCase().equals("crawl")) {
+        if(disciplin == 1) {
+            StævneResultat stævneResultat = new StævneResultat("Crawl", minutes, seconds, milliseconds, LocalDate.parse(dato), stævneNavn, placering);
             svømmer.setStævneResultatCrawl(stævneResultat);
-        } else if (disciplin.toLowerCase().equals("rygcrawl")) {
+            ui.printTekst("Vi har tilføjet følgende resultat:\n" + stævneResultat + "\nTil svømmeren: " + svømmer.getNavn());
+        } else if (disciplin == 2) {
+            StævneResultat stævneResultat = new StævneResultat("Rygcrawl", minutes, seconds, milliseconds, LocalDate.parse(dato), stævneNavn, placering);
             svømmer.setStævneResultatRygcrawl(stævneResultat);
+            ui.printTekst("Vi har tilføjet følgende resultat:\n" + stævneResultat + "\nTil svømmeren: " + svømmer.getNavn());
+        } else if (disciplin == 3) {
+            StævneResultat stævneResultat = new StævneResultat("Bryst", minutes, seconds, milliseconds, LocalDate.parse(dato), stævneNavn, placering);
+            svømmer.setStævneResultatBryst(stævneResultat);
+            ui.printTekst("Vi har tilføjet følgende resultat:\n" + stævneResultat + "\nTil svømmeren: " + svømmer.getNavn());
+        } else if (disciplin == 4) {
+            StævneResultat stævneResultat = new StævneResultat("Butterfly", minutes, seconds, milliseconds, LocalDate.parse(dato), stævneNavn, placering);
+            svømmer.setStævneResultatButterfly(stævneResultat);
+            ui.printTekst("Vi har tilføjet følgende resultat:\n" + stævneResultat + "\nTil svømmeren: " + svømmer.getNavn());
         }
 
-        //svømmer.setStævneResultat(stævneResultat);
-
-        ui.printTekst("Vi har tilføjet følgende resultat:\n" + stævneResultat + "\nTil svømmeren: " + svømmer.getNavn());
     }
 
     //Skal sammenligne ved at rangere strings af tider fra mindst til størst. Bruger calculateAge() i Klubben til at differenceiere imellem aldersgrupper

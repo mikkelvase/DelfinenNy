@@ -132,8 +132,8 @@ public class Controller {
             ui.printTekst("Indtast navnet på Svømmeren der skal have et nyt træningsresultat: ");
             String søgtesvømmer = ui.fåBrugerValgSomStringt();
 
-            ui.printTekst("Indtast disciplin");
-            String valgteDisciplin = ui.fåBrugerValgSomStringt();
+            ui.printTekst("Indtast disciplin 1. crawl 2. rygcrawl 3. bryst 4. butterfly");
+            int valgteDisciplin = ui.fåBrugerValgSomInt();
 
             ui.printTekst("Indtast først antal hele minutter");
             int valgteMinutter = ui.fåBrugerValgSomInt();
@@ -166,8 +166,8 @@ public class Controller {
             ui.printTekst("Indtast placering opnået ved stævne");
             int placering = ui.fåBrugerValgSomInt();
 
-            ui.printTekst("Indtast disciplin");
-            String valgteDisciplin = ui.fåBrugerValgSomStringt();
+            ui.printTekst("Indtast disciplin 1. crawl 2. rygcrawl 3. bryst 4. butterfly");
+            int valgteDisciplin = ui.fåBrugerValgSomInt();
 
             ui.printTekst("Indtast først antal hele minutter");
             int valgteMinutter = ui.fåBrugerValgSomInt();
