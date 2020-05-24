@@ -11,4 +11,19 @@ public class StævneResultat extends Resultat {
         this.stævneNavn = stævneNavn;
         this.placering = placering;
     }
+
+    //Skal give en String fx "12345" som man kan bruge til at sammenligne med andre tider
+    public String getResultatSomString(){
+        String resultat = "";
+
+        return resultat;
+    }
+
+    @Override
+    public String toString() {
+        return
+                "Dato: " + dato +
+                "\nStævne: "  + stævneNavn + " Disciplin: " + disciplin + " Placering: nr. " + placering + "\n" +
+                        "Tid: " + minutter + ":" + sekunder + ":" + millisekunder;
+    }
 }

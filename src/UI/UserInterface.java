@@ -10,7 +10,6 @@ public class UserInterface {
     // Printer tekst til skærmen.
 
     public void printTekst(String text) {
-
         System.out.println(text);
     }
 
@@ -30,26 +29,20 @@ public class UserInterface {
         // Prompts og input fra brugeren anvendes til at "bygge" en svømmer.
 
         printTekst("Indtast venligst navn på medlemmet: ");
-
         nySvømmer.setNavn(userInput.nextLine());
 
 
         printTekst("Indtast venligst adresse: ");
-
         nySvømmer.setAdresse(userInput.nextLine());
 
 
-        printTekst("Angiv fødselsår fødselsdate i følgende format: 1998-03-03 // ÅR:MÅNED:DAG  ");
-
+        printTekst("Angiv fødselsår fødselsdate i følgende format: ÅÅÅÅ-MM-DD");
         String date = userInput.nextLine();
         nySvømmer.setAge(date);
+        printTekst("Vi har registretet følgende fødselsdag: " + nySvømmer.getFødselsdato());
 
 
-        printTekst("Vi har registretet følgende fødselsdag: " + nySvømmer.getAge());
-
-
-        printTekst("Angiv aktivitetsgrad. tryk 1 for: Aktiv , Tryk 2 for: Passiv");
-
+        printTekst("Angiv aktivitetsgrad. Tryk 1 for: Aktiv, Tryk 2 for: Passiv");
         int userChoice = userInput.nextInt();
 
         if (userChoice == 1) {
@@ -61,7 +54,7 @@ public class UserInterface {
         }
 
 
-        printTekst("Angiv type af aktivitet. tryk 1 for KonkurrenceSvømmer, Tryk 2 for Motionist");
+        printTekst("Angiv type af aktivitet. Tryk 1 for KonkurrenceSvømmer, Tryk 2 for Motionist");
 
         int userChoice2 = userInput.nextInt();
         if (userChoice2 == 1) {
@@ -83,18 +76,13 @@ public class UserInterface {
 
             nySvømmer.setDisciplin(disciplin);
 
+            printTekst("Svømmeren blev oprettet i systemet! ");
+
+
         } else if (userChoice1 == 2) {
 
             printTekst("Svømmeren blev oprettet i systemet! ");
         }
-
-
-
-/*
-
-
- */
-
 
         return nySvømmer;
     }

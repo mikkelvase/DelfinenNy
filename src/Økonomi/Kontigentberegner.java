@@ -32,7 +32,7 @@ double seniorRabet = 1600 * 0.75;
 public double beregnKontigentBetalingForSvømmer(SvømmerInformationer svømmerInformationer) {
 
 
-    Period period = Period.between(svømmerInformationer.getAge() , LocalDate.now());
+    Period period = Period.between(svømmerInformationer.getFødselsdato() , LocalDate.now());
 
     int year = period.getYears();
 

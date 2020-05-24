@@ -14,6 +14,16 @@ public class Klubben {
         return alleMedlemerIKlubben;
     }
 
+    public ArrayList<SvømmerInformationer> getAlleKonkurrenceSvømmereIKlubben(){
+        ArrayList<SvømmerInformationer> alleKonkurrenceSvømmereIKlubben = new ArrayList<>();
+        for (int i = 0; i <alleMedlemerIKlubben.size() ; i++) {
+            if (alleMedlemerIKlubben.get(i).getMedlemskab().equalsIgnoreCase("Konkurrence")){
+                alleKonkurrenceSvømmereIKlubben.add(alleMedlemerIKlubben.get(i));
+            }
+        }
+        return alleKonkurrenceSvømmereIKlubben;
+    }
+
 /*
   public SvømmerInformationer søgEfterSvømmer(String navnPåSvømmer) {
 

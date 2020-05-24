@@ -1,10 +1,8 @@
 package Machine;
 
 import java.io.Serializable;
-import java.security.Timestamp;
 import java.time.LocalDate;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
+import java.time.Period;
 import java.util.Arrays;
 
 
@@ -13,13 +11,14 @@ public class SvømmerInformationer implements Serializable {
 
     private String navn;
     private String adresse;
-    private LocalDate age; // Dette er ikke alder, men fødselsdag.
+    private LocalDate fødselsdato;
     private boolean aktivitetsform;
     private String medlemskab;
     private String[] disciplin;
     private double kontigentBetaling;
     //private LocalTime time;
     private Resultat resultat;
+    private StævneResultat stævneResultat;
     //private LocalDate datoForNytResultat;
     private boolean iRestance;
 
@@ -58,10 +57,10 @@ public class SvømmerInformationer implements Serializable {
         return disciplin;
     }
 
-    public LocalDate getAge() {
+    public LocalDate getFødselsdato() {
 
-        this.age = age;
-        return age;
+        this.fødselsdato = fødselsdato;
+        return fødselsdato;
     }
 
     public boolean isiRestance() {
@@ -72,41 +71,28 @@ public class SvømmerInformationer implements Serializable {
         return aktivitetsform;
     }
 
-    /*
-    public LocalDate getDatoForNytResultat() {
-        return datoForNytResultat;
-    }
-     */
-
     public double getKontigentBetaling() {
         return kontigentBetaling;
     }
-
-    /*
-    public LocalTime getTime() {
-        return time;
-    }
-     */
 
     public Resultat getResultat() {
         return resultat;
     }
 
-    // Settere
 
+    // Settere
 
     public void setNavn(String navn) {
         this.navn = navn;
     }
 
-    /*
-    public void setTime(LocalTime time) {
-        this.time = time;
-    }
-     */
 
     public void setResultat(Resultat resultat) {
         this.resultat = resultat;
+    }
+
+    public void setStævneResultat(StævneResultat stævneResultat) {
+        this.stævneResultat = stævneResultat;
     }
 
     public void setAdresse(String adresse) {
@@ -126,11 +112,16 @@ public class SvømmerInformationer implements Serializable {
     }
 
     public LocalDate setAge(String fødselsdato) {
+       this.fødselsdato = LocalDate.parse(fødselsdato);
+        return this.fødselsdato;
+    }
 
-       this.age = LocalDate.parse(fødselsdato);
-
-        return age;
-
+    public int calculateAge() {
+        if ((fødselsdato != null)) {
+            return Period.between(fødselsdato, LocalDate.now()).getYears();
+        } else {
+            return 0;
+        }
     }
 
     public void setiRestance(boolean iRestance) {
@@ -155,9 +146,10 @@ public class SvømmerInformationer implements Serializable {
     public String toString() {
         return "\n" + "Fulde navn: " +
                  navn + " " + " Adresse: " +
-                 adresse + " Fødselsdag: " + age + " \n " + " Aktivitetsform: " +
+                 adresse + " Fødselsdag: " + fødselsdato + " \n " + " Aktivitetsform: " +
                  aktivitetsform + " Medlemdskab:  "
-                + medlemskab + " Valgte discipliner: " + Arrays.toString(disciplin) + "\nBedste reultat: " + resultat +  "\n";
+                + medlemskab + " Valgte discipliner: " + Arrays.toString(disciplin) + "\nBedste træningsreultat: " + resultat +  "\n"
+                + "\nBedste stævnesreultat: " + stævneResultat +  "\n";
     }
 
 

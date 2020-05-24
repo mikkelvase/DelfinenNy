@@ -46,7 +46,8 @@ public class Controller {
 
             ui.printTekst("Tryk 1 for at se alle medlemmer i klubben");
             ui.printTekst("Tryk 2 for vende tilbage til hovedmenu");
-            ui.printTekst("Tryk 3 for at registrere nyt resultat for svømmer");
+            ui.printTekst("Tryk 3 for at registrere nyt træningsresultat for svømmer");
+            ui.printTekst("Tryk 4 for at registrere nyt stævneresultat for svømmer");
 
             int valgteTal2 = ui.fåBrugerValgSomInt();
 
@@ -88,14 +89,9 @@ public class Controller {
 
         double samledeBetalinger = 0.0;
         for (int i = 0; i < klub.getAlleMedlemerIKlubben().size(); i++) {
-
-
             SvømmerInformationer svømmerInformationer = klub.getAlleMedlemerIKlubben().get(i);
             samledeBetalinger = samledeBetalinger + k.beregnKontigentBetalingForSvømmer(svømmerInformationer);
-
-
         }
-
         return samledeBetalinger;
     }
 
@@ -137,24 +133,18 @@ public class Controller {
             String søgtesvømmer = ui.fåBrugerValgSomStringt();
 
             ui.printTekst("Indtast disciplin");
-
             String valgteDisciplin = ui.fåBrugerValgSomStringt();
 
             ui.printTekst("Indtast først antal hele minutter");
-
             int valgteMinutter = ui.fåBrugerValgSomInt();
 
             ui.printTekst("Indtast antal sekunder");
-
             int valgteSekunder = ui.fåBrugerValgSomInt();
 
             ui.printTekst("Indtast antal millisekunder");
-
             int valgteMillisekunder = ui.fåBrugerValgSomInt();
 
             ui.printTekst("Vælg en dato for resultat. Dags dato er: " + LocalDate.now());
-
-
             String valgteDato = ui.fåBrugerValgSomStringt();
 
             træner.angivNytTræningsResultat(valgteDisciplin, valgteMinutter, valgteSekunder, valgteMillisekunder, søgEfterSvømmer(søgtesvømmer), valgteDato);
@@ -162,6 +152,38 @@ public class Controller {
             præsenterMenuForbrugeren();
 
 
+        } else if (valgteTal == 4){
+            ui.printTekst("Konkurrencesvømmere i Klubben: " + klub.getAlleKonkurrenceSvømmereIKlubben());
+
+            // Valgt svømmer.
+
+            ui.printTekst("Indtast navnet på Svømmeren der skal have et nyt stævneresultat: ");
+            String søgtesvømmer = ui.fåBrugerValgSomStringt();
+
+            ui.printTekst("Indtast navn på stævne");
+            String stævneNavn = ui.fåBrugerValgSomStringt();
+
+            ui.printTekst("Indtast placering opnået ved stævne");
+            int placering = ui.fåBrugerValgSomInt();
+
+            ui.printTekst("Indtast disciplin");
+            String valgteDisciplin = ui.fåBrugerValgSomStringt();
+
+            ui.printTekst("Indtast først antal hele minutter");
+            int valgteMinutter = ui.fåBrugerValgSomInt();
+
+            ui.printTekst("Indtast antal sekunder");
+            int valgteSekunder = ui.fåBrugerValgSomInt();
+
+            ui.printTekst("Indtast antal millisekunder");
+            int valgteMillisekunder = ui.fåBrugerValgSomInt();
+
+            ui.printTekst("Vælg en dato for resultat. Dags dato er: " + LocalDate.now());
+            String valgteDato = ui.fåBrugerValgSomStringt();
+
+            træner.angivNytStævneResultat(stævneNavn, placering, valgteDisciplin, valgteMinutter, valgteSekunder, valgteMillisekunder, søgEfterSvømmer(søgtesvømmer), valgteDato);
+
+            præsenterMenuForbrugeren();
         }
 
     }
@@ -186,6 +208,8 @@ public class Controller {
 
 
     }
+
+
 
 
     public SvømmerInformationer søgEfterSvømmer(String navnPåSvømmer) {
