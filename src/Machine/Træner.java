@@ -8,11 +8,11 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class Træner {
-    UserInterface ui = new UserInterface();
+   private  UserInterface ui = new UserInterface();
 
-    // Registrer tid og date for svømmer
 
-    // Fejl sender ikke svømmer med.
+
+
     public void angivNytTræningsResultat(int disciplin, int minutes, int seconds, int milliseconds, SvømmerInformationer svømmer, String dato) {
 
         if(disciplin == 1) {

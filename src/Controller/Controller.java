@@ -12,12 +12,12 @@ import java.util.ArrayList;
 public class Controller {
 
 
-    UserInterface ui = new UserInterface();
-    FilHåndtering filer = new FilHåndtering();
-    Klubben klub = new Klubben();
-    Kontigentberegner k = new Kontigentberegner();
-    Træner træner = new Træner();
-    Revisor revisor = new Revisor();
+  private  UserInterface ui = new UserInterface();
+  private  FilHåndtering filer = new FilHåndtering();
+  protected   Klubben klub = new Klubben();
+  private  Kontigentberegner k = new Kontigentberegner();
+  private  Træner træner = new Træner();
+  private  Revisor revisor = new Revisor();
 
 
     public void præsenterMenuForbrugeren() throws IOException, ClassNotFoundException {
@@ -27,6 +27,7 @@ public class Controller {
         ui.printTekst("Tryk 2 for Træner ");
         ui.printTekst("Tryk 3 for Revisor");
         ui.printTekst("Tryk 4 for at afslutte programmet");
+
 
         int valgteTal = ui.fåBrugerValgSomInt();
 
@@ -112,6 +113,8 @@ public class Controller {
         } else if (valgteTal == 3) {
 
             filer.gemSvømmerIFil(klub.getAlleMedlemerIKlubben());
+        } else {
+            formandMenu(ui.fåBrugerValgSomInt());
         }
 
     }
@@ -145,7 +148,7 @@ public class Controller {
             int valgteMillisekunder = ui.fåBrugerValgSomInt();
 
             ui.printTekst("Vælg en dato for resultat. Dags dato er: " + LocalDate.now());
-            String valgteDato = ui.fåBrugerValgSomStringt();
+            String valgteDato = ui.fåLocalDateObjectSomInput();
 
             træner.angivNytTræningsResultat(valgteDisciplin, valgteMinutter, valgteSekunder, valgteMillisekunder, søgEfterSvømmer(søgtesvømmer), valgteDato);
 
@@ -179,11 +182,13 @@ public class Controller {
             int valgteMillisekunder = ui.fåBrugerValgSomInt();
 
             ui.printTekst("Vælg en dato for resultat. Dags dato er: " + LocalDate.now());
-            String valgteDato = ui.fåBrugerValgSomStringt();
+            String valgteDato = ui.fåLocalDateObjectSomInput();
 
             træner.angivNytStævneResultat(stævneNavn, placering, valgteDisciplin, valgteMinutter, valgteSekunder, valgteMillisekunder, søgEfterSvømmer(søgtesvømmer), valgteDato);
 
             præsenterMenuForbrugeren();
+        } else {
+            trænerMenu(ui.fåBrugerValgSomInt());
         }
 
     }
@@ -204,6 +209,9 @@ public class Controller {
         } else if (valgteTal == 3) {
             præsenterMenuForbrugeren();
 
+        } else {
+
+            revisorMenu(ui.fåBrugerValgSomInt());
         }
 
 

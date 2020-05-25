@@ -5,40 +5,9 @@ import UI.UserInterface;
 
 public class Revisor {
 
-    UserInterface ui = new UserInterface();
-    // Skal kunne sætte medlemmer i restance med søgefunktion.
+   private  UserInterface ui = new UserInterface();
 
 
-
-    // Søge:
-
-
-
-/*
-
-    public SvømmerInformationer søgEfterSvømmerForAtSætteIRestance(String navnPåSvømmerDerSkalIRestance) {
-
-
-        Controller c = new Controller();
-
-
-        for (int i = 0; i < c.getKlub().getAlleMedlemerIKlubben().size(); i++) {
-
-            SvømmerInformationer svømmer = c.getKlub().getAlleMedlemerIKlubben().get(i);
-
-            if (svømmer.getNavn().equals(navnPåSvømmerDerSkalIRestance)) {
-
-                return svømmer;
-            }
-
-
-        }
-
-        return null;
-
-    }
-
- */
 
     public void sætSvømmerIRestance(SvømmerInformationer svømmerInformationer){
 

@@ -2,9 +2,14 @@ package UI;
 
 import Machine.SvømmerInformationer;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
 public class UserInterface {
+
+    private Scanner userInput = new Scanner(System.in);
 
 
     // Printer tekst til skærmen.
@@ -15,7 +20,6 @@ public class UserInterface {
 
 
 
-    Scanner userInput = new Scanner(System.in);
 
 
 
@@ -36,8 +40,9 @@ public class UserInterface {
         nySvømmer.setAdresse(userInput.nextLine());
 
 
-        printTekst("Angiv fødselsår fødselsdate i følgende format: ÅÅÅÅ-MM-DD");
-        String date = userInput.nextLine();
+       // printTekst("Angiv fødselsår fødselsdate i følgende format: ÅÅÅÅ-MM-DD");
+
+        String date = fåLocalDateObjectSomInput();
         nySvømmer.setAge(date);
         printTekst("Vi har registretet følgende fødselsdag: " + nySvømmer.getFødselsdato());
 
@@ -90,27 +95,74 @@ public class UserInterface {
 
 
 // Retunerer en int værdi som brugeren vælger via Scanenr input
-    public int fåBrugerValgSomInt() {
 
-        Scanner s = new Scanner(System.in);
 
-        int brugervalg = s.nextInt();
-
-        return brugervalg;
-    }
 
     // Retunerer en String værdi som brugeren vælger via Scanenr input
+
     public String fåBrugerValgSomStringt() {
 
-        Scanner s = new Scanner(System.in);
+        boolean wenttocatch = false;
+        Scanner scan = new Scanner(System.in);
+        String brugervalg = "";
+        do{
+            if(scan.hasNextLine()){
+                brugervalg = scan.nextLine();
+                wenttocatch = true;
+            }else{
+                scan.nextLine();
+                System.out.println("Ugyldigt input ");
+            }
+        }while(!wenttocatch);
+        return brugervalg;
+    }
 
-        String brugervalg = s.nextLine();
 
+    public int fåBrugerValgSomInt() {
+
+        boolean wenttocatch = false;
+        Scanner scan = new Scanner(System.in);
+        int brugervalg = 0;
+        do{
+            if(scan.hasNextInt()){
+                brugervalg = scan.nextInt();
+                wenttocatch = true;
+            }else{
+                scan.nextLine();
+                System.out.println("Skriv et tal: ");
+            }
+        }while(!wenttocatch);
         return brugervalg;
     }
 
 
 
+public String fåLocalDateObjectSomInput() {
+
+    Scanner scanner = new Scanner(System.in);
+    String dateGivenByUserString;
+    DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+    System.out.println("Skriv datoen i formattet: yyyy-MM-dd");
+
+    try {
+
+        do {
+
+            dateGivenByUserString = scanner.nextLine();
+
+        } while (!dateGivenByUserString.matches("\\d{4}-\\d{2}-\\d{2}"));
+
+       // LocalDate dateGivenByUser = LocalDate.parse(dateGivenByUserString, dateFormatter);
+       //  System.out.println(dateGivenByUser.format(dateFormatter));
+        return dateGivenByUserString;
+
+    } catch (IllegalArgumentException e) {
+        System.out.println("Skriv datoen i formattet: yyyy.MM.dd");
+
+    }
+    return "";
+}
 
 
 

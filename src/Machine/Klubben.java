@@ -7,7 +7,7 @@ public class Klubben {
 
     // Holder alle vores svømmere.
 
-    ArrayList<SvømmerInformationer> alleMedlemerIKlubben = new ArrayList<>();
+  private ArrayList<SvømmerInformationer> alleMedlemerIKlubben = new ArrayList<>();
 
 
     public ArrayList<SvømmerInformationer> getAlleMedlemerIKlubben() {
@@ -23,6 +23,8 @@ public class Klubben {
         }
         return alleKonkurrenceSvømmereIKlubben;
     }
+
+
 
 /*
   public SvømmerInformationer søgEfterSvømmer(String navnPåSvømmer) {

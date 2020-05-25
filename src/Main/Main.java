@@ -14,7 +14,7 @@ public class Main {
 
         run.præsenterMenuForbrugeren();
 
-        //Simons committest.
+
 
 
 

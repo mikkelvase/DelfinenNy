@@ -80,18 +80,6 @@ public class FilHåndtering implements  Serializable {
     }
 
 
-    // Iterrator til at gennemgå Arraylist.
-
-    /*
-     Iterator<SvømmerInformationer> iter = svømmereFrafil.iterator();
-        while(iter.hasNext()) {
-
-            SvømmerInformationer s = iter.next();
-            klub.getAlleMedlemerIKlubben().add(svømmerDerSkalTilføjes);
-
-            );
-     */
-
 
 
 }

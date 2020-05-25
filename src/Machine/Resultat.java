@@ -6,11 +6,11 @@ import java.time.LocalDate;
 //  the process of translating data structures or object state into a format that can be stored is called Serializable. Dette skal implementeres før vi kan gemme til fil.
 public class Resultat implements Serializable {
 
-    String disciplin;
-    int minutter;
-    int sekunder;
-    int millisekunder;
-    LocalDate dato;
+    protected String disciplin;
+    protected int minutter;
+    protected int sekunder;
+    protected int millisekunder;
+    protected LocalDate dato;
 
 
 

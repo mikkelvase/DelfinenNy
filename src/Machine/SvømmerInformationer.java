@@ -146,29 +146,16 @@ public class SvømmerInformationer implements Serializable {
     }
 
     public LocalDate setAge(String fødselsdato) {
+
        this.fødselsdato = LocalDate.parse(fødselsdato);
         return this.fødselsdato;
     }
 
-    public int calculateAge() {
-        if ((fødselsdato != null)) {
-            return Period.between(fødselsdato, LocalDate.now()).getYears();
-        } else {
-            return 0;
-        }
-    }
 
     public void setiRestance(boolean iRestance) {
         this.iRestance = iRestance;
     }
 
-    /*
-    public LocalDate setdatoForNytResultat(String resultatTid) {
-        this.datoForNytResultat = LocalDate.parse(resultatTid);
-        return datoForNytResultat;
-    }
-
-     */
 
     public void setKontigentBetaling(double kontigentBetaling) {
         this.kontigentBetaling = kontigentBetaling;
